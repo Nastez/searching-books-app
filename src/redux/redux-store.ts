@@ -1,9 +1,11 @@
 import {Action, applyMiddleware, combineReducers, createStore} from 'redux'
 import thunkMiddleware, {ThunkAction} from 'redux-thunk'
 import searchingFormReducer from './searchingForm-reducer'
+import searchingBooksDataReducer from './searchingBooksData-reducer'
 
 let rootReducer = combineReducers({
-    searchingForm: searchingFormReducer
+    searchingBookForm: searchingFormReducer,
+    searchingBookData: searchingBooksDataReducer
 })
 
 type RootReducerType = typeof rootReducer
