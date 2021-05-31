@@ -17,7 +17,7 @@ const searchingFormReducer = (state = initialState, action: ActionsTypes): Initi
 
 }
 
-const actions = {
+export const actions = {
     setTitleOfTheBook: (titleOfTheBook: string) => ({
         type: 'SEARCHING_FORM/SET_TITLE_OF_THE_BOOK',
         titleOfTheBook

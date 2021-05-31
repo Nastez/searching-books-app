@@ -1,11 +1,21 @@
 import {Field, Form, Formik, FormikHelpers} from 'formik'
 import React from 'react'
+import s from './SearchingFrom.module.css'
+import {useDispatch} from 'react-redux'
+import {actions} from '../../redux/searchingForm-reducer'
 
 interface Values {
     titleOfTheBook: string;
 }
 
 const SearchingFrom: React.FC = () => {
+
+    const dispatch = useDispatch()
+
+    const sendTitleOfTheBook = (titleOfTheBook: string) => {
+        dispatch(actions.setTitleOfTheBook(titleOfTheBook))
+    }
+
     return <div>
         <Formik
             initialValues={{
@@ -17,15 +27,22 @@ const SearchingFrom: React.FC = () => {
                 {setSubmitting}: FormikHelpers<Values>
             ) => {
                 setTimeout(() => {
-                    alert(JSON.stringify(values, null, 2))
+                    sendTitleOfTheBook(values.titleOfTheBook)
                     setSubmitting(false)
                 }, 500)
             }}
         >
             <Form>
-                <label htmlFor='titleOfTheBook'></label>
-                <Field id='titleOfTheBook' name='titleOfTheBook' placeholder='Название книги'/>
-                <button type='submit'>Найти</button>
+                <div className={s.searchFormBlockWithButton}>
+                    <div className={s.searchingFormBlock}>
+                        <Field className={s.searchingForm} id='titleOfTheBook' name='titleOfTheBook'
+                               placeholder='Title of the book'/>
+                    </div>
+                    <div>
+                        <button type='submit' className={`${s.searchingFormBtn} ${s.searchingFormBtnText}`}>Search
+                        </button>
+                    </div>
+                </div>
             </Form>
         </Formik>
     </div>

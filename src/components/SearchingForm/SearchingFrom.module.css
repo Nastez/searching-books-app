@@ -1,0 +1,45 @@
+.searchingFormBlock {
+    float: left;
+    width: 30%;
+}
+
+.searchFormBlockWithButton {
+    display: flex;
+    flex-direction: row;
+}
+
+.searchingForm {
+    min-width: 100%;
+    max-width: 100%;
+    line-height: 18px;
+    height: 40px;
+    width: 100%;
+    font-size: 16px;
+    padding-left: 9px;
+    border-radius: 3px 0 0 3px;
+    border: 1px solid #9D9C9F;
+}
+
+.searchingFormBtn {
+    height: 40px;
+    width: 100%;
+    font-size: 14px;
+    line-height: 16px;
+    border-radius: 0 3px 3px 0;
+    background-color: #3B393F;
+    display: inline-block;
+}
+
+.searchingFormBtnText {
+    text-transform: uppercase;
+    text-decoration: none;
+    border: none;
+    cursor: pointer;
+    font-weight: bold;
+    text-align: center;
+    color: #fff;
+}
+
+
+
+
