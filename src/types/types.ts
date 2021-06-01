@@ -1,4 +1,4 @@
-export type BooksDataType = {
+export type DocsDataType = {
     cover_i: number,
     has_fulltext: boolean,
     edition_count: number,
@@ -9,5 +9,5 @@ export type BooksDataType = {
     ia: Array<string>,
     author_key: Array<string>,
     public_scan_b: boolean,
-    isbn: Array<string> | null,
+    isbn: Array<string>
 }

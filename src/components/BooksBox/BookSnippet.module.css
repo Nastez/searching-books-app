@@ -1,3 +1,14 @@
 .bookSnippetContainer {
     display: flex;
+    height: 200px;
+}
+
+.bookAuthorText {
+    font-size: 14px;
+    line-height: 18px;
+    margin-bottom: 3px;
+}
+
+.bookTitleText {
+    color: #666666;
 }

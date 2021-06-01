@@ -1,21 +1,14 @@
-import React, {useEffect} from 'react'
+import React from 'react'
 import BookSnippet from './BookSnippet'
-import {useDispatch, useSelector} from 'react-redux'
-import {requestBooksData} from '../../redux/searchingBooksData-reducer'
-import {searchingFormSelector} from '../../redux/searchingForm-selector'
+import {useSelector} from 'react-redux'
+import {getDocsData} from '../../redux/booksData-selector'
 
 const BooksBox: React.FC = () => {
 
-    const dispatch = useDispatch()
-
-    const titleOfTheBook = useSelector(searchingFormSelector)
-
-    useEffect(() => {
-        dispatch(requestBooksData(titleOfTheBook))
-    }, [titleOfTheBook])
+    const docs = useSelector(getDocsData)
 
     return <div>
-        <BookSnippet/>
+        {docs.map(d => <BookSnippet authorName={d.author_name}  title={d.title} ia={d.ia} isbn={d.isbn}/>)}
     </div>
 }
 

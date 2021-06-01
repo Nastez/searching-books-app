@@ -1,4 +1,4 @@
-import {Field, Form, Formik, FormikHelpers} from 'formik'
+import {Field, Form, Formik} from 'formik'
 import React from 'react'
 import s from './SearchingFrom.module.css'
 import {useDispatch} from 'react-redux'
@@ -24,13 +24,10 @@ const SearchingFrom: React.FC = () => {
             }}
             onSubmit={(
                 values: Values,
-                {setSubmitting}: FormikHelpers<Values>
             ) => {
-                setTimeout(() => {
-                    sendTitleOfTheBook(values.titleOfTheBook)
-                    setSubmitting(false)
-                }, 500)
-            }}
+                sendTitleOfTheBook(values.titleOfTheBook)
+            }
+            }
         >
             <Form>
                 <div className={s.searchFormBlockWithButton}>

@@ -1,9 +1,9 @@
 import {BaseThunkType, InferActionsTypes} from './redux-store'
 import {searchBookAPI} from '../api/searchBook-api'
-import {BooksDataType} from '../types/types'
+import {DocsDataType} from '../types/types'
 
 const initialState = {
-    docs: [] as Array<BooksDataType>
+    docs: [] as Array<DocsDataType>,
 }
 
 const searchingBooksDataReducer = (state = initialState, action: ActionsTypes): InitialStateType => {
@@ -19,16 +19,16 @@ const searchingBooksDataReducer = (state = initialState, action: ActionsTypes): 
 }
 
 export const actions = {
-    setSearchingBooksData: (docs: []) => ({
+    setSearchingBooksData: (docs: Array<DocsDataType>) => ({
         type: 'SEARCHING_BOOKS_DATA/SET_SEARCHING_BOOKS_DATA',
-        docs
-    } as const)
+        docs: docs
+    } as const),
 }
 
 export const requestBooksData = (titleOfTheBook: string): ThunkType => {
     return async (dispatch) => {
         let data = await searchBookAPI.getBooksData(titleOfTheBook)
-        dispatch(actions.setSearchingBooksData(data))
+        dispatch(actions.setSearchingBooksData(data.docs))
     }
 }
 
