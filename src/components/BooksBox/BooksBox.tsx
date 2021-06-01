@@ -4,11 +4,10 @@ import {useSelector} from 'react-redux'
 import {getDocsData} from '../../redux/booksData-selector'
 
 const BooksBox: React.FC = () => {
-
     const docs = useSelector(getDocsData)
 
     return <div>
-        {docs.map(d => <BookSnippet authorName={d.author_name}  title={d.title} ia={d.ia} isbn={d.isbn}/>)}
+        {docs.map(d => <BookSnippet authorName={d.author_name} title={d.title} ia={d.ia} isbn={d.isbn} publisher={d.publisher} publishDate={d.publish_date} keyValue={d.key} key={d.key}/>)}
     </div>
 }
 

@@ -6,7 +6,6 @@ import {searchingFormSelector} from './redux/searchingForm-selector'
 /*import {getInitializedStatus} from './redux/app-selector'*/
 import {requestBooksData} from './redux/searchingBooksData-reducer'
 
-
 /*
 type ValueType = {
     isInitialized: boolean,
@@ -23,9 +22,7 @@ const App: React.FC = () => {
 
     useEffect(() => {
         dispatch(requestBooksData(titleOfTheBook))
-    }, [titleOfTheBook])
-
-
+    }, [dispatch, titleOfTheBook])
 
     /* useEffect(() => {
          dispatch(initializeApp(titleOfTheBook))
@@ -39,7 +36,6 @@ const App: React.FC = () => {
         <SearchingFrom/>
         <BooksBox/>
     </div>
-
 }
 
 export default App

@@ -9,5 +9,7 @@ export type DocsDataType = {
     ia: Array<string>,
     author_key: Array<string>,
     public_scan_b: boolean,
-    isbn: Array<string>
+    isbn: Array<string>,
+    publish_date:Array<string>,
+    publisher: Array<string>,
 }

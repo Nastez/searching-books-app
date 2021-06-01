@@ -1,6 +1,7 @@
 .bookSnippetContainer {
     display: flex;
-    height: 200px;
+    height: 100px;
+    gap: 10px;
 }
 
 .bookAuthorText {
@@ -11,4 +12,9 @@
 
 .bookTitleText {
     color: #666666;
+}
+
+.bookWithoutCover {
+    height: 50px;
+    width: 50px;
 }
