@@ -4,7 +4,7 @@ import s from './SearchingFrom.module.css'
 import {useDispatch} from 'react-redux'
 import {actions} from '../../redux/searchingForm-reducer'
 
-interface Values {
+type Values = {
     titleOfTheBook: string;
 }
 
@@ -16,31 +16,51 @@ const SearchingFrom: React.FC = () => {
         dispatch(actions.setTitleOfTheBook(titleOfTheBook))
     }
 
+    let delayTimer: NodeJS.Timeout
+
+    const doSearchOnCLick = (value: string) => {
+        clearTimeout(delayTimer)
+        sendTitleOfTheBook(value)
+    }
+
+    const doSearch = (values: string) => {
+        clearTimeout(delayTimer)
+        delayTimer = setTimeout(() => {
+            sendTitleOfTheBook(values)
+        }, 1000)
+    }
+
     return <div>
         <Formik
             initialValues={{
-                titleOfTheBook: '',
-
+                titleOfTheBook: ''
             }}
             onSubmit={(
                 values: Values,
             ) => {
-                sendTitleOfTheBook(values.titleOfTheBook)
+                doSearch(values.titleOfTheBook)
             }
             }
         >
-            <Form>
-                <div className={s.searchFormBlockWithButton}>
-                    <div className={s.searchingFormBlock}>
-                        <Field className={s.searchingForm} id='titleOfTheBook' name='titleOfTheBook'
-                               placeholder='Title of the book'/>
+            {({values, handleChange, handleSubmit}) => {
+                return <Form onChangeCapture={e => {
+                    handleSubmit()
+                }}>
+                    <div className={s.searchFormBlockWithButton}>
+                        <div className={s.searchingFormBlock}>
+                            <Field className={s.searchingForm} id='titleOfTheBook' name='titleOfTheBook'
+                                   placeholder='Title of the book' onChange={handleChange}/>
+                        </div>
+                        <div>
+                            <button type='button' className={`${s.searchingFormBtn} ${s.searchingFormBtnText}`}
+                                    onClick={() => {
+                                        doSearchOnCLick(values.titleOfTheBook)
+                                    }}>Search
+                            </button>
+                        </div>
                     </div>
-                    <div>
-                        <button type='submit' className={`${s.searchingFormBtn} ${s.searchingFormBtnText}`}>Search
-                        </button>
-                    </div>
-                </div>
-            </Form>
+                </Form>
+            }}
         </Formik>
     </div>
 }

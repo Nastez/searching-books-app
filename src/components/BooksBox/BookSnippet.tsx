@@ -25,14 +25,14 @@ const BookSnippet: React.FC<BookDataPropsType> = ({authorName, title, ia, isbn, 
         setModal(false)
     }
 
-    const authorNameArr = authorName === undefined || null ? <span>No name</span> : authorName.join(', ')
+    const authorNameArr = authorName === undefined || authorName === null ? <span>No name</span> : authorName.join(', ')
 
     return <>
         <div className={s.bookSnippetContainer} onClick={() => {
             showModal()
         }}>
             <div>
-                {isbn === undefined || null ? <img src={bookWithoutCover} className={s.bookWithoutCover}/> :
+                {isbn === undefined || isbn === null ? <img src={bookWithoutCover} className={s.bookWithoutCover}/> :
                     <img src={`https://covers.openlibrary.org/b/isbn/${isbn[0]}-S.jpg`}/>}
             </div>
             <div>

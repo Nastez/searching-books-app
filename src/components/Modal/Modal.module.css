@@ -1,15 +1,33 @@
+.bookWithoutCover {
+    width: 300px;
+    height: 200px;
+}
+
 .modal {
     position: fixed;
-    top: 10%;
-    right: 10%;
-    bottom: 10%;
+    top: 20%;
+    right: 65%;
+    bottom: 40%;
     left: 10%;
     padding: 10px;
     box-shadow: 0 10px 30px 0 rgba(127, 127, 127, 0.3);
     background: rgba(255, 255, 255, 0.8);
+    border-radius: 10px;
 }
 
-.bookWithoutCover {
-    width: 100px;
-    height: 100px;
+.modalBox {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
 }
+
+.modalText {
+    font-style: normal;
+    font-size: 14px;
+    line-height: 21px;
+}
+
+.modalAuthorNameText {
+    color: #666666;
+}
+
