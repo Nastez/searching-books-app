@@ -47,17 +47,13 @@ const SearchingFrom: React.FC = () => {
                     handleSubmit()
                 }}>
                     <div className={s.searchFormBlockWithButton}>
-                        <div className={s.searchingFormBlock}>
-                            <Field className={s.searchingForm} id='titleOfTheBook' name='titleOfTheBook'
-                                   placeholder='Title of the book' onChange={handleChange}/>
-                        </div>
-                        <div>
-                            <button type='button' className={`${s.searchingFormBtn} ${s.searchingFormBtnText}`}
-                                    onClick={() => {
-                                        doSearchOnCLick(values.titleOfTheBook)
-                                    }}>Search
-                            </button>
-                        </div>
+                        <Field className={s.searchingForm} id='titleOfTheBook' name='titleOfTheBook'
+                               placeholder='Title of the book' onChange={handleChange}/>
+                        <button type='button' className={`${s.searchingFormBtn} ${s.searchingFormBtnText}`}
+                                onClick={() => {
+                                    doSearchOnCLick(values.titleOfTheBook)
+                                }}>Search
+                        </button>
                     </div>
                 </Form>
             }}

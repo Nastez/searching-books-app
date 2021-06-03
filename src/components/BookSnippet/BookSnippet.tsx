@@ -14,29 +14,31 @@ type PropsType = {
     ) => void
 }
 
+
 const BookSnippet: React.FC<PropsType> = ({onItemClick}) => {
 
     const docs = useSelector(getDocsData)
-
+    debugger
     return <>
-        <div>
+        <div className={s.snippetsContainer}>
             {docs.map((data) => (
                 <div key={data.key}>
                     <div className={s.bookSnippetContainer} onClick={
                         () => {
                             onItemClick(data.author_name, data.title, data.isbn, data.publisher, data.publish_date)
                         }}>
-                        <div>
+                        <div className={s.bookCard}>
                             {data.isbn === undefined || data.isbn === null ?
-                                <img alt='No cover' src={bookWithoutCover} className={s.bookWithoutCover}/> :
-                                <img alt='No cover'
-                                     src={`https://covers.openlibrary.org/b/isbn/${data.isbn[0]}-S.jpg`}/>}
+                                <img alt='No cover' src={bookWithoutCover}/> :
+                                <img alt='Cover'
+                                     src={`https://covers.openlibrary.org/b/isbn/${data.isbn.flat(1)[0]}-M.jpg`}/>}
                         </div>
-                        <div>
+                        <div className={s.bookSnippetTextContainer}>
                             <div
-                                className={s.bookAuthorText}>{data.author_name === undefined || data.author_name === null ?
-                                <span>No name</span> : data.author_name.join(', ')}</div>
-                            <div className={s.bookTitleText}>{data.title}</div>
+                                className={s.bookAuthorText}>Author
+                                name: {data.author_name === undefined || data.author_name === null ?
+                                    <span>No name</span> : data.author_name.join(', ')}</div>
+                            <div>Title: {data.title}</div>
                         </div>
                     </div>
                 </div>

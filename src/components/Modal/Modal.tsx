@@ -14,11 +14,11 @@ const Modal: React.FC<ModalDataType> = ({bookDataPropsType, onHide}) => {
         <div className={s.modal}>
             <div onClick={onHide} className={s.onHideButton}></div>
             <div className={s.modalBox}>
-                <div>
+                <div className={s.bookCoverBox}>
                     {bookDataPropsType.isbn === undefined || bookDataPropsType.isbn === null ?
                         <img alt='No cover' src={bookWithoutCover} className={s.bookWithoutCover}/> :
-                        <img alt='No cover'
-                             src={`https://covers.openlibrary.org/b/isbn/${bookDataPropsType.isbn[0]}-L.jpg`}/>}
+                        <img alt='Cover'
+                             src={`https://covers.openlibrary.org/b/isbn/${bookDataPropsType.isbn.flat(1)[0]}-L.jpg`}/>}
                 </div>
                 <div className={s.modalText}>
                     <div>Title: {bookDataPropsType.title}</div>
@@ -35,7 +35,6 @@ const Modal: React.FC<ModalDataType> = ({bookDataPropsType, onHide}) => {
                         <div>No ISBN</div> : bookDataPropsType.isbn[0]}</div>
                 </div>
             </div>
-
         </div>
     </>
 }

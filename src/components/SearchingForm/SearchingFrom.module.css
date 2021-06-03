@@ -1,33 +1,28 @@
-.searchingFormBlock {
-    float: left;
-    width: 30%;
-}
-
 .searchFormBlockWithButton {
+    margin: 0 auto;
     display: flex;
     flex-direction: row;
+    width: 20%;
+    height: 40px;
 }
 
 .searchingForm {
     min-width: 100%;
     max-width: 100%;
     line-height: 18px;
-    height: 40px;
-    width: 100%;
     font-size: 16px;
     padding-left: 9px;
     border-radius: 3px 0 0 3px;
     border: 1px solid #9D9C9F;
+    flex-basis: 80%;
 }
 
 .searchingFormBtn {
-    height: 40px;
     width: 100%;
     font-size: 14px;
     line-height: 16px;
     border-radius: 0 3px 3px 0;
     background-color: #3B393F;
-    display: inline-block;
 }
 
 .searchingFormBtnText {
@@ -39,6 +34,10 @@
     text-align: center;
     color: #fff;
 }
+
+
+
+
 
 
 
