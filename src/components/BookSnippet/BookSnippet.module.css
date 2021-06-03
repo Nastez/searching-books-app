@@ -48,6 +48,42 @@
 .snippetsContainer {
     padding: 2% 20% 2% 20%;
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
     grid-gap: 20px 20px;
+}
+
+
+@media (min-width: 500px) {
+    .snippetsContainer {
+        grid-template-columns: 1fr 1fr;
+        padding: 2%;
+    }
+
+    .bookCard {
+        width: 70px;
+        height: 70px;
+    }
+}
+
+@media (min-width: 700px) {
+    .snippetsContainer {
+        grid-template-columns: 1fr 1fr 1fr;
+        grid-gap: 10px 10px;
+    }
+
+    .bookCard {
+        width: 100px;
+        height: 100px;
+    }
+}
+
+@media (min-width: 1000px) {
+    .snippetsContainer {
+        grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+        padding: 2% 20% 2% 20%;
+    }
+
+    .bookCard {
+        width: 200px;
+        height: 200px;
+    }
 }

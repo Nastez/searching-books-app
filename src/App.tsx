@@ -1,10 +1,10 @@
 import React, {useEffect, useState} from 'react'
 import SearchingFrom from './components/SearchingForm/SearchingForm'
 import {useDispatch, useSelector} from 'react-redux'
-import {searchingFormSelector} from './redux/searchingForm-selector'
 import {requestBooksData} from './redux/searchingBooksData-reducer'
 import Modal from './components/Modal/Modal'
 import BookSnippet from './components/BookSnippet/BookSnippet'
+import {getTitleOfTheBook} from './redux/searchingForm-selector'
 
 export type ModalDataType = {
     showModal: boolean,
@@ -20,7 +20,7 @@ export type BookDataPropsType = {
 }
 
 const App: React.FC = () => {
-    const titleOfTheBook = useSelector(searchingFormSelector)
+    const titleOfTheBook = useSelector(getTitleOfTheBook)
 
     const dispatch = useDispatch()
 

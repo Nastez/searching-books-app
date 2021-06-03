@@ -1,8 +1,8 @@
 import React from 'react'
 import {useSelector} from 'react-redux'
-import {getDocsData} from '../../redux/booksData-selector'
 import s from './BookSnippet.module.css'
 import bookWithoutCover from '../../assets/bookWithoutCover.png'
+import {getDocsData} from '../../redux/docsData-selector'
 
 type PropsType = {
     onItemClick: (

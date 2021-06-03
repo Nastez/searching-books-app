@@ -3,7 +3,7 @@ import {searchBookAPI} from '../api/searchBook-api'
 import {DocsDataType} from '../types/types'
 
 const initialState = {
-    docs: [] as Array<DocsDataType>,
+    docs: [] as Array<DocsDataType>
 }
 
 const searchingBooksDataReducer = (state = initialState, action: ActionsTypes): InitialStateType => {
@@ -22,7 +22,7 @@ export const actions = {
     setSearchingBooksData: (docs: Array<DocsDataType>) => ({
         type: 'SEARCHING_BOOKS_DATA/SET_SEARCHING_BOOKS_DATA',
         docs: docs
-    } as const),
+    } as const)
 }
 
 export const requestBooksData = (titleOfTheBook: string): ThunkType => {

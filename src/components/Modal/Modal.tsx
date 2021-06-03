@@ -9,7 +9,6 @@ export type ModalDataType = {
 }
 
 const Modal: React.FC<ModalDataType> = ({bookDataPropsType, onHide}) => {
-    debugger
     return <>
         <div className={s.modal}>
             <div onClick={onHide} className={s.onHideButton}></div>
