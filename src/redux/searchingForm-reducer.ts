@@ -1,4 +1,4 @@
-import {BaseThunkType, InferActionsTypes} from './redux-store'
+import {InferActionsTypes} from './redux-store'
 
 const initialState = {
     titleOfTheBook: ''
@@ -14,7 +14,6 @@ const searchingFormReducer = (state = initialState, action: ActionsTypes): Initi
         default:
             return state
     }
-
 }
 
 export const actions = {
@@ -31,5 +30,3 @@ export default searchingFormReducer
 type InitialStateType = typeof initialState
 
 type ActionsTypes = InferActionsTypes<typeof actions>
-
-type ThunkType = BaseThunkType<ActionsTypes>

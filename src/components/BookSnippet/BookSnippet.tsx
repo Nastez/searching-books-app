@@ -14,11 +14,10 @@ type PropsType = {
     ) => void
 }
 
-
 const BookSnippet: React.FC<PropsType> = ({onItemClick}) => {
 
     const docs = useSelector(getDocsData)
-    debugger
+
     return <>
         <div className={s.snippetsContainer}>
             {docs.map((data) => (
@@ -29,16 +28,26 @@ const BookSnippet: React.FC<PropsType> = ({onItemClick}) => {
                         }}>
                         <div className={s.bookCard}>
                             {data.isbn === undefined || data.isbn === null ?
-                                <img alt='No cover' src={bookWithoutCover}/> :
-                                <img alt='Cover'
-                                     src={`https://covers.openlibrary.org/b/isbn/${data.isbn.flat(1)[0]}-M.jpg`}/>}
+                                <img alt='No cover' src={bookWithoutCover} className={s.bookWithoutCover}/> :
+                                (data.isbn.length === 1 ?
+                                        <img alt='Cover'
+                                             src={`https://covers.openlibrary.org/b/isbn/${data.isbn.flat(1)[0]}-M.jpg`}/> :
+                                        <img alt='Cover'
+                                             src={`https://covers.openlibrary.org/b/isbn/${data.isbn.flat(1)[1]}-M.jpg`}/>
+                                )
+                            }
                         </div>
                         <div className={s.bookSnippetTextContainer}>
                             <div
-                                className={s.bookAuthorText}>Author
-                                name: {data.author_name === undefined || data.author_name === null ?
-                                    <span>No name</span> : data.author_name.join(', ')}</div>
-                            <div>Title: {data.title}</div>
+                                className={s.bookAuthorText}>
+                                <span className={s.titles}>Author: </span>
+                                {data.author_name === undefined || data.author_name === null ?
+                                    <span>No name</span> : <span>{data.author_name.join(', ')}</span>}
+                            </div>
+                            <div className={s.titleText}>
+                                <span className={s.titles}>Title: </span>
+                                <span>{data.title}</span>
+                            </div>
                         </div>
                     </div>
                 </div>

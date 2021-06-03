@@ -9,7 +9,7 @@ export type ModalDataType = {
 }
 
 const Modal: React.FC<ModalDataType> = ({bookDataPropsType, onHide}) => {
-
+    debugger
     return <>
         <div className={s.modal}>
             <div onClick={onHide} className={s.onHideButton}></div>
@@ -17,21 +17,28 @@ const Modal: React.FC<ModalDataType> = ({bookDataPropsType, onHide}) => {
                 <div className={s.bookCoverBox}>
                     {bookDataPropsType.isbn === undefined || bookDataPropsType.isbn === null ?
                         <img alt='No cover' src={bookWithoutCover} className={s.bookWithoutCover}/> :
-                        <img alt='Cover'
-                             src={`https://covers.openlibrary.org/b/isbn/${bookDataPropsType.isbn.flat(1)[0]}-L.jpg`}/>}
+
+                        (bookDataPropsType.isbn.length === 1 ?
+                                <img alt='Cover'
+                                     src={`https://covers.openlibrary.org/b/isbn/${bookDataPropsType.isbn.flat(1)[0]}-L.jpg`}/> :
+                                <img alt='Cover'
+                                     src={`https://covers.openlibrary.org/b/isbn/${bookDataPropsType.isbn.flat(1)[1]}-L.jpg`}/>
+                        )
+                    }
                 </div>
                 <div className={s.modalText}>
-                    <div>Title: {bookDataPropsType.title}</div>
-                    <div>Author
-                        Name: {bookDataPropsType.authorName === undefined || bookDataPropsType.authorName === null ?
-                            <span>No name</span> : bookDataPropsType.authorName.join(', ')}</div>
-                    <div>Publish
+                    <div><span className={s.titles}>Title: </span> {bookDataPropsType.title}</div>
+                    <div><span
+                        className={s.titles}>Author: </span> {bookDataPropsType.authorName === undefined || bookDataPropsType.authorName === null ?
+                        <span>No name</span> : bookDataPropsType.authorName.join(', ')}</div>
+                    <div><span className={s.titles}>Publish: </span>
                         Date: {bookDataPropsType.publishDate === undefined || bookDataPropsType.publishDate === null ?
                             <div>No Publish Date</div> : bookDataPropsType.publishDate[0]}</div>
-                    <div>Publish
-                        Date: {bookDataPropsType.publisher === undefined || bookDataPropsType.publisher === null ?
-                            <div>No Publisher</div> : bookDataPropsType.publisher[0]}</div>
-                    <div>ISBN: {bookDataPropsType.isbn === undefined || bookDataPropsType.isbn === null ?
+                    <div><span className={s.titles}>Publish
+                        Date: </span> {bookDataPropsType.publisher === undefined || bookDataPropsType.publisher === null ?
+                        <div>No Publisher</div> : bookDataPropsType.publisher[0]}</div>
+                    <div><span
+                        className={s.titles}>ISBN: </span> {bookDataPropsType.isbn === undefined || bookDataPropsType.isbn === null ?
                         <div>No ISBN</div> : bookDataPropsType.isbn[0]}</div>
                 </div>
             </div>

@@ -4,6 +4,7 @@
     flex-direction: row;
     width: 20%;
     height: 40px;
+    margin-top: 2%;
 }
 
 .searchingForm {
@@ -23,6 +24,7 @@
     line-height: 16px;
     border-radius: 0 3px 3px 0;
     background-color: #3B393F;
+    padding: 1%;
 }
 
 .searchingFormBtnText {

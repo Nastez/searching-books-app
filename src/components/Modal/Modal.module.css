@@ -52,3 +52,7 @@
     content: url(../../assets/cross.png);
 }
 
+.titles {
+    font-weight: bold;
+}
+
