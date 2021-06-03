@@ -1,22 +1,26 @@
-import React, {useEffect} from 'react'
+import React, {useEffect, useState} from 'react'
 import SearchingFrom from './components/SearchingForm/SearchingForm'
-import BooksBox from './components/BooksBox/BooksBox'
 import {useDispatch, useSelector} from 'react-redux'
 import {searchingFormSelector} from './redux/searchingForm-selector'
-/*import {getInitializedStatus} from './redux/app-selector'*/
 import {requestBooksData} from './redux/searchingBooksData-reducer'
+import Modal from './components/Modal/Modal'
+import BookSnippet from './components/BookSnippet/BookSnippet'
 
-/*
-type ValueType = {
-    isInitialized: boolean,
-    titleOfTheBook: string,
-    books: Array<BookDataType>
+export type ModalDataType = {
+    showModal: boolean,
+    bookDataPropsType: BookDataPropsType | null
 }
-*/
+
+export type BookDataPropsType = {
+    authorName: string[] | null,
+    title: string | null,
+    isbn: string[] | null,
+    publisher: string[] | null,
+    publishDate: string[] | null
+}
 
 const App: React.FC = () => {
     const titleOfTheBook = useSelector(searchingFormSelector)
-    /*const isInitialized = useSelector(getInitializedStatus)*/
 
     const dispatch = useDispatch()
 
@@ -24,17 +28,50 @@ const App: React.FC = () => {
         dispatch(requestBooksData(titleOfTheBook))
     }, [dispatch, titleOfTheBook])
 
-    /* useEffect(() => {
-         dispatch(initializeApp(titleOfTheBook))
-     }, [dispatch, titleOfTheBook])
+    const [showModalData, setShowModal] = useState<ModalDataType>({
+        showModal: false,
+        bookDataPropsType: {
+            authorName: null,
+            title: null,
+            isbn: null,
+            publisher: null,
+            publishDate: null
+        }
+    })
 
+    const onItemClick = (
+        authorName: string[],
+        title: string,
+        isbn: string[],
+        publisher: string[],
+        publishDate: string[]
+    ) => {
+        setShowModal({
+            showModal: true,
+            bookDataPropsType: {
+                authorName: authorName,
+                title: title,
+                isbn: isbn,
+                publisher: publisher,
+                publishDate: publishDate
+            }
+        })
+    }
 
-     if (!isInitialized) {
-         return <Preloader/>
-     }*/
+    const hideModal = () => {
+        setShowModal({
+            showModal: false,
+            bookDataPropsType: null
+        })
+    }
+
     return <div>
         <SearchingFrom/>
-        <BooksBox/>
+        <BookSnippet onItemClick={onItemClick}/>
+        {
+            showModalData.showModal && showModalData.bookDataPropsType !== null &&
+            <Modal bookDataPropsType={showModalData.bookDataPropsType} onHide={hideModal}/>
+        }
     </div>
 }
 
