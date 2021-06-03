@@ -43,7 +43,6 @@ const BookSnippet: React.FC<PropsType> = ({onItemClick}) => {
             ))}
         </div>
     </>
-
 }
 
 export default BookSnippet

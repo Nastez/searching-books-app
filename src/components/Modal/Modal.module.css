@@ -1,6 +1,5 @@
 .bookWithoutCover {
-    width: 300px;
-    height: 200px;
+    width: 45%;
 }
 
 .modal {
@@ -27,7 +26,10 @@
     line-height: 21px;
 }
 
-.modalAuthorNameText {
-    color: #666666;
+.onHideButton:after {
+    position: fixed;
+    margin-left: 23.5%;
+    display: inline-block;
+    content: url(../../assets/cross.png);
 }
 
